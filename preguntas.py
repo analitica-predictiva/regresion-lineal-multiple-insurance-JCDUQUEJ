@@ -22,7 +22,7 @@ def pregunta_01():
 
     # Asigne la columna `charges` a la variable `y`.
     #____ = ____
-    y = df[['charges']].copy()
+    y = df['charges'].copy()
 
     # Asigne una copia del dataframe `df` a la variable `X`.
     #____ = ____.____(____)
@@ -44,7 +44,7 @@ def pregunta_02():
 
     # Importe train_test_split
     #from ____ import train_test_split
-    from ____ import train_test_split
+    from sklearn.model_selection import train_test_split
 
     # Cargue los datos y asigne los resultados a `X` y `y`.
     X, y = pregunta_01()
@@ -57,11 +57,11 @@ def pregunta_02():
     #    test_size=____,
     #    random_state=____,
     #)
-    (X_train, X_test, y_train, y_test,) = ____(
-        ____,
-        ____,
-        test_size=____,
-        random_state=____,
+    (X_train, X_test, y_train, y_test,) = train_test_split(
+        X,
+        y,
+        test_size=300,
+        random_state=12345,
     )
 
     # Retorne `X_train`, `X_test`, `y_train` y `y_test`
