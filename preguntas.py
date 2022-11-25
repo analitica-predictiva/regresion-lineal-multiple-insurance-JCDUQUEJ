@@ -18,16 +18,19 @@ def pregunta_01():
     -------------------------------------------------------------------------------------
     """
     # Lea el archivo `insurance.csv` y asignelo al DataFrame `df`
-    df = ____
+    df = pd.read_csv('insurance.csv')
 
     # Asigne la columna `charges` a la variable `y`.
-    ____ = ____
+    #____ = ____
+    y = df[['charges']].copy()
 
     # Asigne una copia del dataframe `df` a la variable `X`.
-    ____ = ____.____(____)
+    #____ = ____.____(____)
+    X = df.copy()
 
     # Remueva la columna `charges` del DataFrame `X`.
-    ____.____(____)
+    #____.____(____)
+    X.drop('charges')
 
     # Retorne `X` y `y`
     return X, y
@@ -40,13 +43,20 @@ def pregunta_02():
     """
 
     # Importe train_test_split
-    from ____ import ____
+    #from ____ import train_test_split
+    from ____ import train_test_split
 
     # Cargue los datos y asigne los resultados a `X` y `y`.
     X, y = pregunta_01()
 
     # Divida los datos de entrenamiento y prueba. La semilla del generador de números
     # aleatorios es 12345. Use 300 patrones para la muestra de prueba.
+    #(X_train, X_test, y_train, y_test,) = ____(
+    #    ____,
+    #    ____,
+    #    test_size=____,
+    #    random_state=____,
+    #)
     (X_train, X_test, y_train, y_test,) = ____(
         ____,
         ____,
@@ -72,7 +82,37 @@ def pregunta_03():
     # Importe GridSearchCV
     # Importe Pipeline
     # Importe OneHotEncoder
+    #from ____ import ____
     from ____ import ____
+
+    #pipeline = ____(
+    #    steps=[
+    #        # Paso 1: Construya un column_transformer que aplica OneHotEncoder a las
+    #        # variables categóricas, y no aplica ninguna transformación al resto de
+    #        # las variables.
+    #        (
+    #            "column_transfomer",
+    #            ____(
+    #                (
+    #                    ____(),
+    #                    ____(____=____),
+    #                ),
+    #                remainder=____,
+    #            ),
+    #        ),
+    #        # Paso 2: Construya un selector de características que seleccione las K
+    #        # características más importantes. Utilice la función f_regression.
+    #        (
+    #            "selectKBest",
+    #            ____(____=____),
+    #        ),
+    #        # Paso 3: Construya un modelo de regresión lineal.
+    #        (
+    #            "____",
+    #            ____(____),
+    #        ),
+    #    ],
+    #)
 
     pipeline = ____(
         steps=[
@@ -104,10 +144,14 @@ def pregunta_03():
     )
 
     # Cargua de las variables.
+    #X_train, _, y_train, _ = pregunta_02()
     X_train, _, y_train, _ = pregunta_02()
 
     # Defina un diccionario de parámetros para el GridSearchCV. Se deben
     # considerar valores desde 1 hasta 11 regresores para el modelo
+    #param_grid = {
+    #    ____: ____(____, ____),
+    #}
     param_grid = {
         ____: ____(____, ____),
     }
@@ -115,6 +159,14 @@ def pregunta_03():
     # Defina una instancia de GridSearchCV con el pipeline y el diccionario de
     # parámetros. Use cv = 5, y como métrica de evaluación el valor negativo del
     # error cuadrático medio.
+    #gridSearchCV = ____(
+    #    estimator=____,
+    #    param_grid=____,
+    #    cv=____,
+    #    scoring=____,
+    #    refit=____,
+    #    return_train_score=____,
+    #)
     gridSearchCV = ____(
         estimator=____,
         param_grid=____,
@@ -138,20 +190,34 @@ def pregunta_04():
     """
 
     # Importe mean_squared_error
-    from ____ import ____
+    #from ____ import ____
+    from sklearn.metrics import mean_squared_error
 
     # Obtenga el pipeline optimo de la pregunta 3.
+    #gridSearchCV = pregunta_03()
     gridSearchCV = pregunta_03()
 
     # Cargue las variables.
+    #X_train, X_test, y_train, y_test = pregunta_02()
     X_train, X_test, y_train, y_test = pregunta_02()
 
     # Evalúe el modelo con los conjuntos de entrenamiento y prueba.
+    #y_train_pred = ____.____(____)
+    #y_test_pred = ____.____(____)
     y_train_pred = ____.____(____)
     y_test_pred = ____.____(____)
 
     # Compute el error cuadratico medio de entrenamiento y prueba. Redondee los
     # valores a dos decimales.
+    #mse_train = ____(
+    #    _____,
+    #    _____,
+    #).round(2)
+
+    #mse_test = ____(
+    #    _____,
+    #    _____,
+    #).round(2)
 
     mse_train = ____(
         _____,
